@@ -1,30 +1,19 @@
 
-<div class="card-body">
-    <span class="badge badge-warning">
-        id:{{ device.id}} name : {{ device.name}}
-    </span>
-
-<p>
-  Name: {{device.name}} 
-</p>
-<p>
-    Status: {{device.status}} 
-  </p>
-  <p>
-    Description: {{device.description}} 
-  </p>
-  <div class="col-3">
+<div class="alert alert-danger" *ngIf="error">
+     Unexpected Error ocurred -404 (Not Found)
+</div>
+<div class="card card-body">
+<div class=" col-8" >
     <img src="{{ device.image }}" class="card-img">
 </div>
-</div>
-
-<!-- <div class="card my-3" *ngIf="device">
-    <div class="card-body">
-        <span class="badge badge-warning">
-            id:{{ device.id}} name : {{ device.name}}
-        </span>
-        
-        
+    <div class="card-body col-12">
+      <h5 class="card-title"> {{device.name}}</h5>
+      <p class="card-text">{{device.description}}</p>
+      <a [routerLink]="['/devices',]" class="btn btn-primary">All Devices</a>
     </div>
+ </div>
 
-</div> -->
+
+
+
+

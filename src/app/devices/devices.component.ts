@@ -9,45 +9,19 @@ import { Device } from '../models/device';
   styleUrls: ['./devices.component.css'],
 })
 export class DevicesComponent implements OnInit {
- 
+  
   items: any[] = [];
-  // items: Device[] | undefined;
-  // selectedDevice!: Device;
   error: any;
 
-  constructor(private devicesService: DevicesService) {
-    //this.results = this.devicesService.resolveItems();
+  constructor(private devicesService: DevicesService) {}
 
-    //this.devicesService.resolveItems.subscribe(devices => {
-    // this.devicesService.resolveItems = devices as DeviceData[]
-  }
-
-  
-
-
-  ngOnInit(): void { 
-    this.devicesService.resolveItems().subscribe((data : any[])=>{
-      console.log(data);
-      this.items = data;
-    },
-    (error => this.error = error)
+  ngOnInit(): void {
+    this.devicesService.resolveItems().subscribe(
+      (data: any[]) => {
+        console.log(data);
+        this.items = data;
+      },
+      (error) => (this.error = error)
     );
-    
-    
-    //this.getDevices();
   }
-  
-  // getDevices(): void{
-  //   this.devicesService.resolveItems().subscribe(
-  //     (response) => {
-       
-  //       this.items = response;
-  //     },
-  //     (error => this.error = error)
-  //   );
-  // }
-
-  // onSelect(device: Device): void{
-  //   this.selectedDevice = device;
-  //}
 }

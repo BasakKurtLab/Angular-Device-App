@@ -6,46 +6,25 @@ import { DevicesService } from '../service/devices.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent implements OnInit {
-  
- 
-  
-  // @Input() item?: Device
- device: any;
+  device: any;
+  error: any;
 
   constructor(
     private devicesService: DevicesService,
     private route: ActivatedRoute
   ) {}
 
- 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      console.log(params.get('id'))
-       this.devicesService.getItem(params.get('id')).subscribe(d =>{
-          console.log(d);
-          this.device = d;
-      })   
-      });
-    
-    
-     //this.getDevice();
+    this.route.paramMap.subscribe((params) => {
+      console.log(params.get('id'));
+      this.devicesService.getItem(params.get('id')).subscribe((d) => {
+        console.log(d);
+        this.device = d;
+      },
+      error =>this.error = error);
+    });
   }
-
-//  getItem():void {
-//   const id = this.route.snapshot.paramMap.get('id');
-//      this.devicesService.getItem(id)
-//       .subscribe(device =>this.device = device);
-//  }
-  // getDevice(): void{
-  //   const id = this.route.snapshot.paramMap.get('id');
-  //   this.devicesService.getItem(id)
-  //     .subscribe(item => this.item = item);
-  //   console.log(this.item);
-    
-  //   }
-
 }
-
