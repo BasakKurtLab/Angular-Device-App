@@ -1,0 +1,31 @@
+
+<div class="alert alert-danger" *ngIf="error">
+    {{ error}}
+  </div>
+<div class="card my-2" *ngFor="let device of items; let number = index" [routerLink]="['/devices', device.id]" >
+    <div class="row">
+        <div class="col-3">
+            <img src="{{ device.image }}" class="card-img">
+        </div>
+        <div class="col-9">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a [routerLink]="['/devices', device.id]">{{ number+1 }} -{{ device.name }}</a>
+                </h5>
+                <p class="card-text">
+                    {{ device.description }} {{ device.id }}
+                </p>
+                <p class="card-text">
+                    {{ device.isStatus }} {{ device.id }}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
