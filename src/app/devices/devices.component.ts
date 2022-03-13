@@ -24,4 +24,5 @@ export class DevicesComponent implements OnInit {
       (error) => (this.error = error)
     );
   }
+ 
 }

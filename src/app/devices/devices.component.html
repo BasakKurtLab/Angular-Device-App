@@ -8,15 +8,19 @@
         </div>
         <div class="col-8">
             <div class="card-body">
-                <h3 class="card-title">
-                    <a [routerLink]="['/devices', device.id]" class="navbar-brand"> {{ device.name }}</a>
-                </h3>
+                <h6 class="card-title">
+                    <a [routerLink]="['/devices', device.id]" class="text-decoration-none"> {{ device.name }}</a>
+                </h6>
 
-                <p class="card-text">
-                    Status: {{ device.isStatus }}
-                </p>
+                <div [ngClass]="(device.status === 1)? 'alert alert-success': 'alert alert-danger'"
+                    class=" d-flex align-items-center" role="alert">
+
+                    <p class="card-text">
+                        Status: {{ device.isStatus }}
+                    </p>
+
+                </div>
             </div>
         </div>
-
     </div>
 </div>
