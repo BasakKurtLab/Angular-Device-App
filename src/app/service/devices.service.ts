@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Device } from '../models/device';
 import { map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -14,12 +14,10 @@ export class DevicesService {
   private readonly URL = 'http://localhost:3006/devices';
 
   constructor(private http: HttpClient) {}
-
-  // create a method named: resolveItems()
+ 
   // this method returns list-of-items in form of Observable
   // every Http call returns Observable object
-  resolveItems(): Observable<Device[]> {
-    // this.http is a HttpClient library provide by @angular/common
+  resolveItems(): Observable<Device[]> {  
     // we are calling .get() method over this.http object
     // this .get() method takes URL to call API
     return this.http.get<Device[]>(this.URL).pipe(
